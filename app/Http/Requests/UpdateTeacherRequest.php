@@ -25,6 +25,7 @@ class UpdateTeacherRequest extends FormRequest
     {
         return [
             'name' => ['required'],
+            'bio' => ['required'],
             'role' => ['required'],
             'acc_number' => ['required']
         ];
