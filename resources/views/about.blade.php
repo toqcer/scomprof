@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="_head_01">
-                    <h2>Mengenai {{ $profile->name }}</h2>
+                    <h2>{{ $profile->name }}</h2>
                     <p>Home<i class="fas fa-angle-right"></i><span>About Us</span></p>
                 </div>
             </div>
@@ -17,8 +17,18 @@
 <section class="se-001">
     <div class="container">
         <h1>Mengenai {{ $profile->name }}</h1>
-        <div class="_Ol_er_qw">
-            {{ $profile->desc }}
+        <div class="mt-3">
+            {!! $profile->desc !!}
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <h3 class="mb-2">Visi</h3>
+                <p>{{ $profile->vision }}</p>
+            </div>
+            <div class="col">
+                <h3 class="mb-2">Misi</h3>
+                <p>{{ $profile->mission }}</p>
+            </div>
         </div>
     </div>
 </section>
@@ -67,5 +77,35 @@
              </div>
          </div>
      </div>
+ </section>
+
+ <section class="team">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                 <div class="heading">
+                     <h2>Guru Kami</h2>
+                 </div>
+            </div>
+
+             <div class="col-12">
+                <div class="owl-carousel owl-stage-outer">
+                    @foreach ($teachers as $teacher)
+                        <div class="item">
+                            <div class="team-card">
+                                <div class="image-team">
+                                    <img src="{{ $teacher->avatar }}">
+                                </div>
+                                <div class="team-content">
+                                    <h3>{{ $teacher->name }}</h3>
+                                    <p>{{ $teacher->role }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+         </div>
+    </div>
  </section>
 @endsection
