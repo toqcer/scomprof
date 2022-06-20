@@ -18,6 +18,7 @@ class TeacherFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'bio' => $this->faker->paragraph(),
             'role' => $this->faker->randomElement([
                 'guru', 'kepala sekolah', 'wakil kepala sekolah', 'kepala perpustakaan', 'staff penjaga'
             ]),

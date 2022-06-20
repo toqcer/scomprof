@@ -65,6 +65,7 @@ class TeacherController extends Controller
     public function update(UpdateTeacherRequest $request, Teacher $teacher)
     {
         $teacher->name = $request->name;
+        $teacher->bio = $request->bio;
         $teacher->role = $request->role;
         $teacher->acc_number = $request->acc_number;
         if ($request->hasFile('avatar')) {

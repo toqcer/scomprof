@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('status', Profile::STATUSLIST);
             $table->enum('accreditation', ['A', 'B', 'C']);
             $table->text('address');
-            $table->string('vision');
+            $table->text('vision');
             $table->text('mission');
             $table->date('build_at');
             $table->timestamps();
