@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContactPerson;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
-class ContactPersonController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ContactPersonController extends Controller
      */
     public function index()
     {
-        return view('profile.contact-person', ['contactPerson' => ContactPerson::first()]);
+        return view('profile.contact', ['contact' => Contact::first()]);
     }
 
     /**
@@ -31,7 +31,7 @@ class ContactPersonController extends Controller
             'telephone' => ['required']
         ]);
 
-        ContactPerson::findOrFail($id)->update([
+        Contact::findOrFail($id)->update([
             'teacher_name' => $request->teacher_name,
             'telephone' => $request->telephone
         ]);

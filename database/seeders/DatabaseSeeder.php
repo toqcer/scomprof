@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TeacherSeeder::class,
             ProfileSeeder::class,
-            ContactPersonSeeder::class
+            ContactSeeder::class
         ]);
     }
 }
