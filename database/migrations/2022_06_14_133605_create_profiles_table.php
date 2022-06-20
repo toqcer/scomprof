@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('address');
             $table->text('vision');
             $table->text('mission');
+            $table->date('build_at');
             $table->timestamps();
         });
     }
