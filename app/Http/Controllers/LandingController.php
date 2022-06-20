@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Contact;
 use App\Models\Profile;
 use App\Models\Teacher;
@@ -11,7 +12,9 @@ class LandingController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $articles = Article::limit(6)->get();
+
+        return view('welcome', compact('articles'));
     }
 
     public function about()
@@ -35,7 +38,7 @@ class LandingController extends Controller
         $contact = Contact::first();
         $contacts = [
             [
-                'label' => 'Location',
+                'label' => 'Alamat',
                 'icon' => 'far fa-location',
                 'val' => $profile->address,
                 'link' => 'https://goo.gl/maps/7MVVvsT7KdQQgQ2m9'

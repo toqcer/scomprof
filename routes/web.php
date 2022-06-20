@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingController;
@@ -18,6 +19,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('gallery', GalleryController::class)->except('show');
     Route::resource('teacher', TeacherController::class)->except('show');
     Route::get('dashboard', [DashboardController::class, 'index']);
+    Route::resource('article', [ArticleController::class])->except('show');
 });
 
 require __DIR__ . '/auth.php';
