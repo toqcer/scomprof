@@ -20,6 +20,16 @@
         <div class="mt-3">
             {!! $profile->desc !!}
         </div>
+        <div class="row mt-5">
+            <div class="col">
+                <h3 class="mb-2">Visi</h3>
+                <p>{{ $profile->vision }}</p>
+            </div>
+            <div class="col">
+                <h3 class="mb-2">Misi</h3>
+                <p>{{ $profile->mission }}</p>
+            </div>
+        </div>
     </div>
 </section>
 
