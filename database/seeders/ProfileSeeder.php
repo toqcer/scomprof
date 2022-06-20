@@ -24,6 +24,6 @@ class ProfileSeeder extends Seeder
             'address' => 'Desa Situmba, Kecamatan Sipirok, Kabupaten Tapanuli Selatan, Provinsi Sumatera Utara.',
             'vision' => 'Mewujudkan masyarakat yang berpendidikan, cerdas, berilmu pengetahuan, dan memiliki rasa indah dan nyaman, dan pengamalan UUD 1945 yaitu mencerdaskan kehidupan bangsa.',
             'mission' => 'Mengembangkan semangat pendidikan bagi masyarakat demi tercapainya pendidikan yang berbasis kompetensi dan mengacu pada standar pendidikan nasional dan memelihara lingkungan dan kesehatan.'
-        ])
+        ]);
     }
 }

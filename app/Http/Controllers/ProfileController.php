@@ -25,7 +25,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('profile.create');
+        return view('profile.create', ['statusList' => Profile::STATUSLIST]);
     }
 
     /**
