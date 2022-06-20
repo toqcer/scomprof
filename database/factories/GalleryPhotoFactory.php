@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Gallery;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Gallery>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\GalleryPhoto>
  */
-class GalleryFactory extends Factory
+class GalleryPhotoFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +18,8 @@ class GalleryFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence(),
-            'description' => $this->faker->paragraph(),
+            'gallery_id' => Gallery::factory(),
+            'image' => '/image/gallery.jpg'
         ];
     }
 }
