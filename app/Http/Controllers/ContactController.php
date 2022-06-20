@@ -35,5 +35,6 @@ class ContactController extends Controller
             'teacher_name' => $request->teacher_name,
             'telephone' => $request->telephone
         ]);
+        return redirect()->back()->with(['success' => 'berhasil mengubah data kontak']);
     }
 }
