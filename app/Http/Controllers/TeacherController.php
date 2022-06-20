@@ -41,6 +41,7 @@ class TeacherController extends Controller
         $data = $request->validated();
         $data['avatar'] = '/storage/' . $request->file('avatar')->store('public/teacher');
         Teacher::create($data);
+        return redirect()->back()->with(['success' => 'berhasil menambahkan data guru']);
     }
 
     /**
@@ -71,6 +72,8 @@ class TeacherController extends Controller
         }
 
         $teacher->save();
+        return redirect()->back()->with(['success' => 'berhasil mengubah data guru']);
+
     }
 
     /**
@@ -82,5 +85,6 @@ class TeacherController extends Controller
     public function destroy(Teacher $teacher)
     {
         $teacher->delete();
+        return redirect()->back()->with(['success' => 'berhasil menghapus data guru']);
     }
 }
