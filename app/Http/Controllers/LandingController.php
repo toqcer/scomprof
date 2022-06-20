@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Gallery;
+use App\Models\GalleryPhoto;
 use App\Models\Profile;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -54,8 +56,11 @@ class LandingController extends Controller
             ]
         ];
 
+        $carousel = GalleryPhoto::groupBy('gallery_id')->get();
+        $galleries = Gallery::inRandomOrder()->limit(4)->get();
+
         $teachers = Teacher::all();
 
-        return view('about', compact('profile', 'statusInfo', 'contacts', 'teachers'));
+        return view('about', compact('profile', 'statusInfo', 'contacts', 'teachers', 'carousel', 'galleries'));
     }
 }

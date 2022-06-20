@@ -3,12 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
-use App\Http\Requests\StoreGalleryRequest;
-use App\Http\Requests\UpdateGalleryRequest;
+use App\Http\Requests\GalleryRequest;
+use App\Models\GalleryPhoto;
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
+    public function publicIndex()
+    {
+        $galleries = Gallery::all();
+
+        return view('gallery.public.index', compact('galleries'));
+    }
+
+    public function publicShow(Gallery $gallery)
+    {
+        return view('gallery.public.show', compact('gallery'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,11 +49,9 @@ class GalleryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreGalleryRequest $request)
+    public function store(GalleryRequest $request)
     {
-        $data = $request->validated();
-        $data['image'] = '/storage/' . $request->file('image')->store('public/gallery');
-        Gallery::create($data);
+        Gallery::create($request->validated());
         
         return redirect()->back()->with(['success' => 'berhasil menambahkan gallery']);
 
@@ -65,12 +75,10 @@ class GalleryController extends Controller
      * @param  \App\Models\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateGalleryRequest $request, Gallery $gallery)
+    public function update(GalleryRequest $request, Gallery $gallery)
     {
         $gallery->title = $request->title;
-        if ($request->hasFile('image')) {
-            $gallery->image = '/storage/' . $request->file('image')->store('public/gallery');
-        }
+        $gallery->description = $request->description;
 
         $gallery->save();
 
@@ -89,5 +97,23 @@ class GalleryController extends Controller
         $gallery->delete();
         return redirect()->back()->with(['success' => 'berhasil menghapus gallery']);
         
+    }
+
+    public function storePhoto(Request $request, Gallery $gallery)
+    {
+        $request->validate([
+            'image' => ['required', 'image'],
+        ]);
+        GalleryPhoto::create([
+            'gallery_id' => $gallery->id,
+            'image' => '/storage/' . $request->file('image')->store('public/gallery'),
+        ]);
+        return redirect()->back()->with(['success' => 'berhasil menambah foto gallery']);
+    }
+
+    public function destroyPhoto(GalleryPhoto $galleryPhoto)
+    {
+        $galleryPhoto->delete();
+        return redirect()->back()->with(['success' => 'berhasil menghapus foto gallery']);
     }
 }
