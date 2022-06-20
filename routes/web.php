@@ -21,7 +21,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('gallery', GalleryController::class)->except('show');
     Route::resource('teacher', TeacherController::class)->except('show');
     Route::get('dashboard', [DashboardController::class, 'index']);
-    Route::resource('article', [ArticleController::class])->except('show');
+    Route::get('article', [ArticleController::class, 'manage'])->name('article.manage');
+    Route::resource('article', ArticleController::class)->except('show', 'index');
     Route::post('gallery/{gallery}/photo', [GalleryController::class, 'storePhoto'])->name('gallery.photo.store');
     Route::delete('/photo/{galleryPhoto}', [GalleryController::class, 'destroyPhoto'])->name('gallery.photo.destroy');
 });

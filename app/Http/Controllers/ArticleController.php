@@ -15,7 +15,14 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        return view('article.index');
+    }
+
+    public function manage()
+    {
+        $articles = Article::all();
+
+        return view('article.manage', compact('articles'));
     }
 
     /**
@@ -36,14 +43,16 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
+        $uploadedFile = $request->file('cover');
+        $path = $uploadedFile->store('public/articles');
 
         Article::create([
             'title' => $request->title,
-            'cover' => '/storage/' . $request->file('avatar')->store('public/articles'),
+            'cover' => '/storage/' . $path,
             'content' => $request->content
         ]);
 
-        return redirect()->route('admin.article.index');
+        return redirect()->route('admin.article.manage');
     }
 
     /**
@@ -79,12 +88,12 @@ class ArticleController extends Controller
     {
         $article->title = $request->title;
         if ($request->hasFile('cover')) {
-            $article->cover = '/storage/' . $request->file('avatar')->store('public/articles');
+            $article->cover = '/storage/' . $request->file('cover')->store('public/articles');
         }
         $article->content = $request->content;
         $article->save();
 
-        return redirect()->route('admin.article.index');
+        return redirect()->route('admin.article.manage');
     }
 
     /**
@@ -97,6 +106,6 @@ class ArticleController extends Controller
     {
         $article->delete();
 
-        return redirect()->route('admin.article.index');
+        return redirect()->route('admin.article.manage');
     }
 }
