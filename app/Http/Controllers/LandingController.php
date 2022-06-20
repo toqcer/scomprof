@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use App\Models\Profile;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -53,6 +54,8 @@ class LandingController extends Controller
             ]
         ];
 
-        return view('about', compact('profile', 'statusInfo', 'contacts'));
+        $teachers = Teacher::all();
+
+        return view('about', compact('profile', 'statusInfo', 'contacts', 'teachers'));
     }
 }
