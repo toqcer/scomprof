@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('role');
             $table->string('acc_number');
+            $table->string('avatar');
             $table->timestamps();
         });
     }

@@ -20,6 +20,7 @@ class TeacherFactory extends Factory
             'name' => $this->faker->name(),
             'role' => $this->faker->randomElement(['guru', 'kepala sekolah', '']),
             'acc_number' => $this->faker->randomNumber(),
+            'avatar' => '/image/teacher.jpg'
         ];
     }
 }

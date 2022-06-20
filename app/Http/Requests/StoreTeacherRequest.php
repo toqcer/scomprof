@@ -26,7 +26,8 @@ class StoreTeacherRequest extends FormRequest
         return [
             'name' => ['required', 'unique:teachers'],
             'role' => ['required'],
-            'acc_number' => ['required']
+            'acc_number' => ['required'],
+            'avatar' => ['required', 'image'],
         ];
     }
 }
