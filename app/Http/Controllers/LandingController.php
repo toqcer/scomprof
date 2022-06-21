@@ -15,8 +15,17 @@ class LandingController extends Controller
     public function index()
     {
         $articles = Article::limit(6)->get();
+        $galleryCarousel = Gallery::with('carousel')->without('galleryPhotos')->get();
 
-        return view('welcome', compact('articles'));
+        $carousels = [];
+        foreach ($galleryCarousel as $gallery) {
+            $carousels[] = $gallery->carousel;
+        }
+        $carousels = collect($carousels);
+
+        $galleries = Gallery::all();
+
+        return view('welcome', compact('articles', 'carousels', 'galleries'));
     }
 
     public function about()
@@ -59,11 +68,10 @@ class LandingController extends Controller
             ]
         ];
 
-        $carousel = GalleryPhoto::groupBy('gallery_id')->get();
         $galleries = Gallery::inRandomOrder()->limit(4)->get();
 
         $teachers = Teacher::all();
 
-        return view('about', compact('profile', 'statusInfo', 'contacts', 'teachers', 'carousel', 'galleries'));
+        return view('about', compact('profile', 'statusInfo', 'contacts', 'teachers', 'galleries'));
     }
 }

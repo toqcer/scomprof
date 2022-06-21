@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->date('event_at');
             $table->text('description');
             $table->timestamps();
         });

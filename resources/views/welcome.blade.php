@@ -3,17 +3,15 @@
 @section('content')
     <section id="carouselExampleFade" class="carousel slide carousel-fade slider" data-ride="carousel">
         <div class="carousel-inner">
-            @for ($i = 0; $i < 3; $i++)
-                <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
-                    <img src="{{ asset('template/assets/images/slider/'. $i + 1 .'.jpg') }}" class="d-block" alt="...">
-                    <div class="carousel-caption">
-                        <h2>Best Education For Diploma</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui perspiciatis, eveniet sequi labore
-                            vel itaque adipisci odio necessitatibus voluptatibus saepe, impedit enim unde velit amet rem,
-                            suscipit corrupti vero ad.</p>
-                    </div>
+            @foreach ($carousels as $carousel)
+            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                <img src="{{ asset($carousel->image) }}" class="d-block">
+                <div class="carousel-caption">
+                    <h2>{{ $carousel->gallery->title }}</h2>
+                    <p>{{ $carousel->gallery->description }}</p>
                 </div>
-            @endfor
+            </div>
+            @endforeach
         </div>
         <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -40,7 +38,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="featured-box">
                             <div class="feature-card">
-                                <a href="#"><i class="far fa-link"></i></a>
+                                <a href="{{ route('article.show', $article->id) }}"><i class="far fa-link"></i></a>
                                 <img src="{{ asset($article->cover) }}">
                             </div>
                             <div class="content">
@@ -53,6 +51,40 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+        </div>
+    </section>
+
+     <section class="team">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="heading">
+                        <h2>Event & Gallery</h2>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="owl-carousel owl-stage-outer">
+                        @foreach ($galleries as $gallery)
+                            <div class="item">
+                                <div class="team-card">
+                                    <div class="image-team">
+                                        <img src="{{ $gallery->carousel->image }}">
+                                    </div>
+                                    <div class="team-content">
+                                        <h3>
+                                            <a href="{{ route('gallery.show', $gallery->id) }}" class="text-inherit">
+                                                {{ $gallery->title }}
+                                            </a>
+                                        </h3>
+                                        <p>Event Tanggal: {{ $gallery->event_at->format('d M Y') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </section>

@@ -19,6 +19,7 @@ class GalleryFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
+            'event_at' => $this->faker->date()
         ];
     }
 }

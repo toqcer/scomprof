@@ -16,4 +16,11 @@ class Gallery extends Model
     {
         return $this->hasMany(GalleryPhoto::class);
     }
+
+    public function carousel()
+    {
+        return $this->hasOne(GalleryPhoto::class);
+    }
+
+    protected $casts = ['event_at' => 'datetime:Y-m-d'];
 }

@@ -19,6 +19,12 @@
     @foreach ($css as $style)
     <link rel="stylesheet" href="{{ asset('template/assets/css/' . $style) }}">
     @endforeach
+
+    <style>
+        .text-inherit {
+            color: inherit;
+        }
+    </style>
 </head>
 
 <body>

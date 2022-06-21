@@ -10,4 +10,9 @@ class GalleryPhoto extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function gallery()
+    {
+        return $this->belongsTo(Gallery::class);
+    }
 }
