@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Semua Article')
+@section('title', 'Semua Pegawai')
 
 @section('content')
     <div class="card">
@@ -19,6 +19,7 @@
                         <th>Nama</th>
                         <th>Bio</th>
                         <th>Peran</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
