@@ -18,7 +18,7 @@ class GalleryController extends Controller
 
     public function publicShow(Gallery $gallery)
     {
-        return view('gallery.public.show', compact('gallery'));
+        return view('gallery.show', compact('gallery'));
     }
 
     /**
