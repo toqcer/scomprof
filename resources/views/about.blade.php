@@ -99,6 +99,7 @@
                                 <div class="team-content">
                                     <h3>{{ $teacher->name }}</h3>
                                     <p>{{ $teacher->role }}</p>
+                                    <p class="text-monospace">{{ $teacher->bio }}</p>
                                 </div>
                             </div>
                         </div>
