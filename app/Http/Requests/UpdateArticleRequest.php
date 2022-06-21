@@ -25,7 +25,7 @@ class UpdateArticleRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'min:5'],
-            'cover' => ['required', 'image'],
+            'cover' => ['image'],
             'content' => ['required']
         ];
     }
