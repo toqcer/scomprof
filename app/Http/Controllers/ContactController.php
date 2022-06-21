@@ -28,11 +28,13 @@ class ContactController extends Controller
     {
         $request->validate([
             'teacher_name' => ['required'],
+            'email' => ['required'],
             'telephone' => ['required']
         ]);
 
         Contact::findOrFail($id)->update([
             'teacher_name' => $request->teacher_name,
+            'email' => $request->email,
             'telephone' => $request->telephone
         ]);
         return redirect()->back()->with(['success' => 'berhasil mengubah data kontak']);
