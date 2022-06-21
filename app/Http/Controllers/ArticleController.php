@@ -21,8 +21,9 @@ class ArticleController extends Controller
     public function manage()
     {
         $articles = Article::all();
+        $usingDataTable = true;
 
-        return view('article.manage', compact('articles'));
+        return view('article.manage', compact('articles', 'usingDataTable'));
     }
 
     /**
@@ -43,12 +44,9 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        $uploadedFile = $request->file('cover');
-        $path = $uploadedFile->store('public/articles');
-
         Article::create([
             'title' => $request->title,
-            'cover' => '/storage/' . $path,
+            'cover' => '/storage/' . $request->file('cover')->store('articles', 'public'),
             'content' => $request->content
         ]);
 
@@ -77,18 +75,11 @@ class ArticleController extends Controller
         return view('article.edit', compact('article'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateArticleRequest  $request
-     * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateArticleRequest $request, Article $article)
     {
         $article->title = $request->title;
         if ($request->hasFile('cover')) {
-            $article->cover = '/storage/' . $request->file('cover')->store('public/articles');
+            $article->cover = '/storage/' . $request->file('cover')->store('articles', 'public');
         }
         $article->content = $request->content;
         $article->save();

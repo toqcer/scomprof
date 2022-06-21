@@ -16,7 +16,7 @@
                 <thead>
                     <tr>
                         <th>Judul</th>
-                        <th>Konten</th>
+                        <th>Cover</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -24,20 +24,24 @@
                     @foreach ($articles as $article)
                         <tr>
                             <td>{{ $article->title }}</td>
-                            <td>{{ Str::limit($article->content, 30) }}</td>
                             <td>
-                                <a href="{{ route('admin.article.edit', $article->id) }}" class="btn btn-primary">
-                                    Edit
-                                </a>
-                                <a href="{{ route('article.show', $article->id) }}" class="btn btn-primary">
-                                    Lihat
-                                </a>
-                                <form action="{{ route('admin.article.destroy', $article->id) }}" method="post">
-                                    @csrf @method('DELETE')
-                                    <button type="button" class="btn btn-danger">
-                                        Hapus
-                                    </button>
-                                </form>
+                                <button type="button" class="btn btn-primary"
+                                data-toggle="modal" data-target="#modal-article-{{ $loop->iteration }}">
+                                    Lihat Cover
+                                </button>
+                            </td>
+                            <td>
+                                <div class="d-flex" style="gap: 10px">
+                                    <a href="{{ route('admin.article.edit', $article->id) }}" class="btn btn-primary">
+                                        Edit
+                                    </a>
+                                    <form action="{{ route('admin.article.destroy', $article->id) }}" method="post">
+                                        @csrf @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
+                                            Hapus
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -45,6 +49,21 @@
             </table>
         </div>
     </div>
+
+    @foreach ($articles as $article)
+    <div class="modal fade" id="modal-article-{{ $loop->iteration }}">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="{{ $article->cover }}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>    
+    @endforeach
+
 @endsection
 
 @push('scripts')

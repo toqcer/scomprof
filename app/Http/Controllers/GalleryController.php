@@ -52,11 +52,10 @@ class GalleryController extends Controller
     public function store(GalleryRequest $request)
     {
         Gallery::create($request->validated());
-        
-        return redirect()->back()->with(['success' => 'berhasil menambahkan gallery']);
 
+        return redirect()->back()->with(['success' => 'berhasil menambahkan gallery']);
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -83,7 +82,6 @@ class GalleryController extends Controller
         $gallery->save();
 
         return redirect()->back()->with(['success' => 'berhasil mengubah gallery']);
-        
     }
 
     /**
@@ -96,7 +94,6 @@ class GalleryController extends Controller
     {
         $gallery->delete();
         return redirect()->back()->with(['success' => 'berhasil menghapus gallery']);
-        
     }
 
     public function storePhoto(Request $request, Gallery $gallery)
@@ -106,7 +103,7 @@ class GalleryController extends Controller
         ]);
         GalleryPhoto::create([
             'gallery_id' => $gallery->id,
-            'image' => '/storage/' . $request->file('image')->store('public/gallery'),
+            'image' => '/storage/' . $request->file('image')->store('gallery', 'public'),
         ]);
         return redirect()->back()->with(['success' => 'berhasil menambah foto gallery']);
     }
