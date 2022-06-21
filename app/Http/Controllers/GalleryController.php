@@ -30,7 +30,7 @@ class GalleryController extends Controller
     {
         $galleries = Gallery::all();
 
-        return view('gallery.index', compact('galleries'));
+        return view('gallery.manage', compact('galleries'));
     }
 
     /**
