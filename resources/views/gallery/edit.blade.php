@@ -3,7 +3,7 @@
 @section('title', 'Edit Article')
 
 @section('content')
-    <form  action="{{ route('admin.gallery.update', $gallery->id) }}" method="POST">
+    <form action="{{ route('admin.gallery.update', $gallery->id) }}" method="POST">
         @csrf @method('PUT')
 
         <div class="card-body">
@@ -18,20 +18,37 @@
                 class="form-control" required>{{ $gallery->description }}</textarea>
             </div>
 
-            <div class="row mb-5">
+            <div class="row mb-5 align-items-center">
+
                 @foreach ($gallery->galleryPhotos as $photo)
                 <div class="col-lg-3">
                     <img src="{{ $photo->image }}" class="img-fluid mb-2" alt="white sample" />
+
                     <button type="submit" class="btn btn-danger" 
                     form="delete-photo-{{ $photo->id }}">X</button>
                 </div>
                 @endforeach
+            </div>
 
-                <a href="" class="btn btn-primary">Tambah Foto</a>
+            <div class="row align-items-end mb-4">
+                <div class="col">
+                    <label for="formAddImg" class="form-label">Tambah Foto Event</label>
+                    <input class="form-control" type="file" name="image" id="formAddImg" form="form-add-img">
+                </div>
+
+                <button type="submit" class="btn btn-primary d-block" form="form-add-img">Submit Foto</button>
+                @error('image')
+                    {{ $message }}
+                @enderror
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
+    </form>
+
+    <form action="{{ route('admin.gallery.photo.store', $gallery->id) }}" method="POST" id="form-add-img" 
+    enctype="multipart/form-data">
+        @csrf
     </form>
 
     @foreach ($gallery->galleryPhotos as $photo)
