@@ -34,8 +34,8 @@
                 <div class="row">
                     <div class="nav-items">
                         <div class="menu-toggle"></div>
-                        <div class="logo">
-                            <img src="{{ asset('template/assets/images/logo-01.png') }}">
+                        <div class="text-white logo align-items-center d-flex">
+                            <a href="/" class="text-inherit">{{ env('APP_NAME') }}</a>
                         </div>
                         <div class="menu-items">
                             <div class="menu">

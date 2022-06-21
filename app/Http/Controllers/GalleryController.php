@@ -81,7 +81,7 @@ class GalleryController extends Controller
 
         $gallery->save();
 
-        return redirect()->back()->with(['success' => 'berhasil mengubah gallery']);
+        return redirect()->route('admin.gallery.index')->with(['success' => 'berhasil mengubah gallery']);
     }
 
     /**
