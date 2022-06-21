@@ -25,6 +25,7 @@ class GalleryRequest extends FormRequest
     {
         return [
             'title' => ['required'],
+            'event_at' => ['required'],
             'description' => ['required'],
         ];
     }

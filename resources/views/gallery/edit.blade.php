@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Edit Article')
+@section('title', 'Edit Gallery')
 
 @section('content')
     <form action="{{ route('admin.gallery.update', $gallery->id) }}" method="POST">
@@ -10,6 +10,11 @@
             <div class="form-group">
                 <label for="title">Judul</label>
                 <input type="text" class="form-control" id="title" name="title" required value="{{ $gallery->title }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="event_at">Tanggal Event</label>
+                <input type="date" class="form-control" id="event_at" name="event_at" required value="{{ $gallery->event_at->format('Y-m-d') }}">
             </div>
 
             <div class="form-group">

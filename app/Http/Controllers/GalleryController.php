@@ -77,6 +77,7 @@ class GalleryController extends Controller
     public function update(GalleryRequest $request, Gallery $gallery)
     {
         $gallery->title = $request->title;
+        $gallery->event_at = $request->event_at;
         $gallery->description = $request->description;
 
         $gallery->save();
