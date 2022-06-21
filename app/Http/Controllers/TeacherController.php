@@ -16,8 +16,9 @@ class TeacherController extends Controller
     public function index()
     {
         $teachers = Teacher::all();
+        $usingDataTable= true;
 
-        return view('teacher.index', compact('teachers'));
+        return view('teacher.index', compact('teachers', 'usingDataTable'));
     }
 
     /**

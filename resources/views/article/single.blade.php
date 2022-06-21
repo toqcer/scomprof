@@ -16,10 +16,10 @@
         </div>
     </section>
 
-     <section class="bg-04">
+    <section class="bg-04">
         <div class="container">
             <img src="{{ $article->cover }}" alt="" class="d-block mb-3 mx-auto">
             {!! $article->content !!}
         </div>
-     </section>
+    </section>
 @endsection
