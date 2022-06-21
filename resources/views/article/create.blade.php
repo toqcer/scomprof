@@ -12,7 +12,7 @@
                 <input type="text" class="form-control" id="title" name="title" required>
 
                 @error('title')
-                    <small class="text-danger">{{ $error->title }}</small>
+                    <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
@@ -21,7 +21,7 @@
                 <textarea id="summernote" rows="4" name="content" data-placeholder="Masukkan konten disini"></textarea>
 
                 @error('content')
-                    <small class="text-danger">{{ $error->content }}</small>
+                    <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
@@ -33,7 +33,7 @@
                 </div>
 
                 @error('cover')
-                    <small class="text-danger">{{ $error->cover }}</small>
+                    <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 

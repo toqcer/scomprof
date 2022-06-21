@@ -39,7 +39,7 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {
         $data = $request->validated();
-        $data['avatar'] = '/storage/' . $request->file('avatar')->store('public/teacher');
+        $data['avatar'] = '/storage/' . $request->file('avatar')->store('teacher', 'public');
         Teacher::create($data);
         return redirect()->back()->with(['success' => 'berhasil menambahkan data guru']);
     }
@@ -69,12 +69,11 @@ class TeacherController extends Controller
         $teacher->role = $request->role;
         $teacher->acc_number = $request->acc_number;
         if ($request->hasFile('avatar')) {
-            $teacher->avatar = '/storage/' . $request->file('avatar')->store('public/teacher');
+            $teacher->avatar = '/storage/' . $request->file('avatar')->store('teacher', 'public');
         }
 
         $teacher->save();
         return redirect()->back()->with(['success' => 'berhasil mengubah data guru']);
-
     }
 
     /**
