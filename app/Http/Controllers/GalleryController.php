@@ -30,7 +30,7 @@ class GalleryController extends Controller
     {
         $galleries = Gallery::all();
 
-        return view('gallery.index', compact('galleries'));
+        return view('gallery.manage', compact('galleries'));
     }
 
     /**
@@ -92,7 +92,9 @@ class GalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
+        $gallery->galleryPhotos()->delete();
         $gallery->delete();
+
         return redirect()->back()->with(['success' => 'berhasil menghapus gallery']);
     }
 

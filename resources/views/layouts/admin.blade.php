@@ -21,6 +21,8 @@
 
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/ekko-lightbox/ekko-lightbox.css') }}">
+
     <style>
         .no-after::after {
             content: none;
@@ -76,9 +78,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('admin.article.manage') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Article</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('admin.teacher.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
-                                <p>Pegawai</p>
+                                <p>Guru</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.gallery.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Gallery Event</p>
                             </a>
                         </li>
                     </ul>
@@ -146,6 +160,8 @@
     <script src="{{ asset('adminlte/plugins/raphael/raphael.min.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
+
+    <script src="{{ asset('adminlte/plugins/ekko-lightbox/ekko-lightbox.min.js') }}"></script>
 
     @if (isset($usingDataTable) and $usingDataTable)
         <script src="{{ asset('adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
