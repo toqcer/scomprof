@@ -14,7 +14,7 @@ class LandingController extends Controller
 {
     public function index()
     {
-        $articles = Article::limit(6)->get();
+        $articles = Article::all();
         $galleryCarousel = Gallery::with('carousel')->without('galleryPhotos')->get();
 
         $carousels = [];
