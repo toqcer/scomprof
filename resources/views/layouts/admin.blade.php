@@ -75,7 +75,12 @@
                                 <p>Profile</p>
                             </a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a href="{{ route('admin.teacher.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Pegawai</p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
