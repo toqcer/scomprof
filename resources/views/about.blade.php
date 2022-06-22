@@ -98,8 +98,8 @@
                                 </div>
                                 <div class="team-content">
                                     <h3>{{ $teacher->name }}</h3>
-                                    <p class="font-weight-bold">{{ $teacher->role }}</p>
                                     <p class="font-weight-bold">{{ $teacher->acc_number }}</p>
+                                    <p class="font-weight-bold">{{ $teacher->role }}</p>
                                     <p class="text-monospace">{{ $teacher->bio }}</p>
                                 </div>
                             </div>
