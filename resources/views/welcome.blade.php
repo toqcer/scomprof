@@ -43,7 +43,6 @@
                             </div>
                             <div class="content">
                                 <h3>{{ $article->title }}</h3>
-                                <p>{{ Str::limit($article->content, 60) }}</p>
                                 <ol>
                                     <li>{{ $article->created_at->format('d M Y') }}</li>
                                 </ol>
@@ -55,7 +54,7 @@
         </div>
     </section>
 
-     <section class="team">
+    <section class="team">
         <div class="container">
             <div class="row">
                 <div class="col-12">
