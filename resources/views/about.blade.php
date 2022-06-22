@@ -7,7 +7,7 @@
             <div class="col-12">
                 <div class="_head_01">
                     <h2>{{ $profile->name }}</h2>
-                    <p>Home<i class="fas fa-angle-right"></i><span>About Us</span></p>
+                    <p>Home<i class="fas fa-angle-right"></i><span>Tentang Kami</span></p>
                 </div>
             </div>
         </div>
@@ -98,7 +98,8 @@
                                 </div>
                                 <div class="team-content">
                                     <h3>{{ $teacher->name }}</h3>
-                                    <p>{{ $teacher->role }}</p>
+                                    <p class="font-weight-bold">{{ $teacher->role }}</p>
+                                    <p class="font-weight-bold">{{ $teacher->acc_number }}</p>
                                     <p class="text-monospace">{{ $teacher->bio }}</p>
                                 </div>
                             </div>
