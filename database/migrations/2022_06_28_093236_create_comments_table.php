@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->text('content');
-            $table->bigInteger('article_id');
+            $table->foreignId('article_id');
             $table->timestamps();
         });
     }
