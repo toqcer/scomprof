@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingController::class, 'index']);
 
 Route::get('about', [LandingController::class, 'about'])->name('about');
+Route::get('feedback', [FeedbackController::class, 'create'])->name('feedback.create');
+Route::post('feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 Route::get('gallery', [GalleryController::class, 'publicIndex'])->name('gallery.index');
 Route::get('gallery/{gallery}', [GalleryController::class, 'publicShow'])->name('gallery.show');
 Route::get('article/{article}', [ArticleController::class, 'show'])->name('article.show');
@@ -21,6 +24,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('profile', ProfileController::class)->only('edit', 'update');
     Route::resource('gallery', GalleryController::class)->except('show');
     Route::resource('teacher', TeacherController::class)->except('show');
+    Route::resource('feedback', FeedbackController::class)->only(['index']);
     Route::get('dashboard', [DashboardController::class, 'index']);
     Route::get('article', [ArticleController::class, 'manage'])->name('article.manage');
     Route::resource('article', ArticleController::class)->except('show', 'index');

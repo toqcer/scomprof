@@ -7,17 +7,11 @@
     <title>{{ config('app.name') }}</title>
 
     @php
-        $css = [
-            'bootstrap.min.css',
-            'all.min.css',
-            'owl.carousel.min.css',
-            'owl.carousel.css',
-            'style.css'
-        ];
+        $css = ['bootstrap.min.css', 'all.min.css', 'owl.carousel.min.css', 'owl.carousel.css', 'style.css'];
     @endphp
 
     @foreach ($css as $style)
-    <link rel="stylesheet" href="{{ asset('template/assets/css/' . $style) }}">
+        <link rel="stylesheet" href="{{ asset('template/assets/css/' . $style) }}">
     @endforeach
 
     <style>
@@ -42,6 +36,7 @@
                                 <ul>
                                     <li><a href="{{ url('/') }}">Home</a></li>
                                     <li><a href="{{ url('about') }}">Tentang Kami</a></li>
+                                    <li><a href="{{ route('feedback.create') }}">Kritik & Saran</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -51,6 +46,15 @@
         </div>
     </header>
 
+    @isset($success)
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> {{ $success }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endisset
+    
     @yield('content')
 
     <footer>
@@ -64,18 +68,11 @@
 </body>
 
 @php
-    $assets = [
-        'jquery-3.2.1.min.js',
-        'popper.min.js',
-        'bootstrap.min.js',
-        'owl.carousel.min.js',
-        'owl.carousel.js',
-        'script.js'
-    ];
+$assets = ['jquery-3.2.1.min.js', 'popper.min.js', 'bootstrap.min.js', 'owl.carousel.min.js', 'owl.carousel.js', 'script.js'];
 @endphp
 
 @foreach ($assets as $js)
-<script src="{{ asset('template/assets/js/' . $js) }}"></script>
+    <script src="{{ asset('template/assets/js/' . $js) }}"></script>
 @endforeach
 
 </html>

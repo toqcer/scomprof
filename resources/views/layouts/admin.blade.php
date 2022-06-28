@@ -96,6 +96,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('admin.feedback.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-phone-alt"></i>
+                                <p>Feedback User</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <form method="POST" class="px-3" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-block btn-danger mt-5">Logout</button>
