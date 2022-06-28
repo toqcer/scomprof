@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingController;
@@ -14,6 +15,7 @@ Route::get('/', [LandingController::class, 'index']);
 Route::get('about', [LandingController::class, 'about'])->name('about');
 Route::get('gallery', [GalleryController::class, 'publicIndex'])->name('gallery.index');
 Route::get('gallery/{gallery}', [GalleryController::class, 'publicShow'])->name('gallery.show');
+Route::get('comment/{article}', [CommentController::class, 'publicShow'])->name('comment.show');
 Route::get('article/{article}', [ArticleController::class, 'show'])->name('article.show');
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
