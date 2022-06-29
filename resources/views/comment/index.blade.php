@@ -12,38 +12,42 @@
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                        <th>No</th>
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Article</th>
                         <th>Content</th>
                         <th>Tampilkan</th>
+                        <th>Created At</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($items as $item)
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->article->title }}</td>
                             <td>{{ $item->content }}</td>
                             <td>{{ $item->is_show ? 'Ya' : 'Tidak' }}</td>
+                            <td>{{ $item->created_at }}</td>
                             <td>
                                 <form action="{{ route('admin.comment.update', $item->id) }}" method="post">
                                     @csrf @method('PUT')
                                     @if (! $item->is_show)
-                                        <button type="submit" class="btn btn-danger" name="visibility" value="show">
+                                        <button type="submit" class="btn btn-info btn-block btn-sm mb-2" name="visibility" value="show">
                                             Tampilkan
                                         </button>
                                     @else
-                                        <button type="submit" class="btn btn-danger" name="visibility" value="hide">
+                                        <button type="submit" class="btn btn-primary btn-block btn-sm mb-2" name="visibility" value="hide">
                                             Sembunyikan
                                         </button>
                                     @endif
                                 </form>
-                                <form action="{{ route('admin.comment.destroy', $article->id) }}" method="post">
+                                <form action="{{ route('admin.comment.destroy', $item->id) }}" method="post">
                                     @csrf @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">
+                                    <button type="submit" class="btn btn-danger  btn-block btn-sm mb-2">
                                         Hapus
                                     </button>
                                 </form>
@@ -54,20 +58,6 @@
             </table>
         </div>
     </div>
-
-    @foreach ($articles as $article)
-    <div class="modal fade" id="modal-article-{{ $loop->iteration }}">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <img src="{{ $article->cover }}" alt="" srcset="" class="img-fluid">
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>    
-    @endforeach
 
 @endsection
 
