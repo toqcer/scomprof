@@ -13,6 +13,12 @@ class Comment extends Model
         'name',
         'content',
         'email',
+        'is_show',
         'article_id'
     ];
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
+    }
 }

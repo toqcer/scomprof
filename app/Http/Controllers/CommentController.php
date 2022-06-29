@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-
-    public function publicShow(Comment $comment)
-    {
-        return view('comment.show');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -20,47 +15,9 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, Article $article)
-    {
-        //
-        Comment::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'content' => $request->content,
-            'article_id' => $article,
+        return view('comment.manage', [
+            'items' => Comment::with('article')->latest()->get(),
         ]);
-
-        return redirect()->back()->with(['success' => 'Berhasil membuat komentar']);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comment $comment)
-    {
-        //
     }
 
     /**
@@ -72,7 +29,10 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $comment->is_show = $request->visibility == 'show';
+        $comment->save();
+
+        return redirect()->back()->with('success', 'Berhasil mengubah status komentar');
     }
 
     /**
@@ -83,6 +43,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return redirect()->back()->with('success', 'Berhasil menghapus komentar');
     }
 }

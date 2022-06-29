@@ -22,6 +22,7 @@ class CommentFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->email(),
             'content' => $this->faker->paragraph(),
+            'is_show' => $this->faker->randomElement([true,false]),
             'article_id' => Article::factory(),
         ];
     }

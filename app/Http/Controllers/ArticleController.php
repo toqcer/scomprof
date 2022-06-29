@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use Illuminate\Http\Request;
+use App\Models\Comment;
 
 class ArticleController extends Controller
 {
@@ -98,5 +100,17 @@ class ArticleController extends Controller
         $article->delete();
 
         return redirect()->route('admin.article.manage');
+    }
+
+    public function comment(Request $request,Article $article)
+    {
+        Comment::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'content' => $request->content,
+            'article_id' => $article->id,
+        ]);
+
+        return redirect()->back()->with('success', 'Berhasil Menambahkan komentar, komentar akan muncul jika disetujui admin');
     }
 }
