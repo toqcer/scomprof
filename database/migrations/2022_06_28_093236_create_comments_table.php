@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
+            $table->string('name', 50);
+            $table->string('email', 50);
             $table->text('content');
             $table->boolean('is_show')->default(0);
             $table->foreignId('article_id');
