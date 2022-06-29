@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->integer('total_student');
             $table->text('desc');
-            $table->string('name');
+            $table->string('name', 100);
             $table->enum('status', Profile::STATUSLIST);
             $table->enum('accreditation', ['A', 'B', 'C']);
             $table->text('address');
