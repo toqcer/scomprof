@@ -97,7 +97,7 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        $article->comments->delete();
+        $article->comments()->delete();
         $article->delete();
 
         return redirect()->route('admin.article.manage');
