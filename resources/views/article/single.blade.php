@@ -22,7 +22,7 @@
             <h1>{{ $article->title }}</h1>
             <p class="mb-4 text-secondary font-italic">dibuat pada {{ $article->created_at }}</p>
             <img src="{{ $article->cover }}" alt="" class="d-block mb-3 mx-auto">
-            <div class="mb-5">
+            <div class="mb-5 text-justify">
                 {!! $article->content !!}
             </div>
             <hr>

@@ -18,7 +18,7 @@
 
             <div class="form-group">
                 <label for="summernote">Konten</label>
-                <textarea id="summernote" rows="4" name="content" data-placeholder="Masukkan konten disini"></textarea>
+                <textarea id="summernote" class="form-control" rows="10" name="content" data-placeholder="Masukkan konten disini"></textarea>
 
                 @error('content')
                     <small class="text-danger">{{ $message }}</small>
@@ -44,10 +44,4 @@
 @endsection
 
 @push('scripts')
-    <script>
-        $('#summernote').summernote({
-            height: 200,
-            placeholder: $(this).data('placeholder')
-        })
-    </script>
 @endpush
