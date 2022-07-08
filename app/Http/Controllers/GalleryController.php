@@ -51,7 +51,11 @@ class GalleryController extends Controller
      */
     public function store(GalleryRequest $request)
     {
-        Gallery::create($request->validated());
+        $gallery = Gallery::create($request->validated());
+        GalleryPhoto::create([
+            'gallery_id' => $gallery->id,
+            'image' => '/storage/' . $request->file('image')->store('gallery', 'public'),
+        ]);
 
         return redirect()->back()->with(['success' => 'berhasil menambahkan gallery']);
     }

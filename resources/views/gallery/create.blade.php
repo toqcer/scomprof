@@ -23,6 +23,13 @@
                 class="form-control" required></textarea>
             </div>
 
+            <div class="row align-items-end mb-4">
+                <div class="col">
+                    <label for="formAddImg" class="form-label">Tambah Foto Event</label>
+                    <input class="form-control" type="file" name="image" id="formAddImg" required>
+                </div>
+            </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
 
